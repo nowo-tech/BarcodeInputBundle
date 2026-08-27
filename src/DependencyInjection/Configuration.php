@@ -8,6 +8,9 @@ use Nowo\BarcodeInputBundle\Form\BarcodeFormat;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use function in_array;
+use function is_string;
+
 final class Configuration implements ConfigurationInterface
 {
     public const ALIAS = 'nowo_barcode_input';
@@ -37,10 +40,10 @@ final class Configuration implements ConfigurationInterface
                     ->defaultValue(['ean_13', 'ean_8', 'code_128', 'code_39', 'upc_a'])
                     ->info('Supported symbologies for camera scanner hints')
                     ->validate()
-                        ->ifTrue(static fn (array $formats): bool => [] === array_filter(
+                        ->ifTrue(static fn (array $formats): bool => array_filter(
                             $formats,
                             static fn (mixed $format): bool => is_string($format) && in_array($format, BarcodeFormat::values(), true),
-                        ))
+                        ) === [])
                         ->thenInvalid('formats must contain at least one supported symbology')
                     ->end()
                 ->end()
