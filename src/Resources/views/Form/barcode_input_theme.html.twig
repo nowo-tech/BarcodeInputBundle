@@ -1,0 +1,32 @@
+{% use 'form_div_layout.html.twig' %}
+
+{% block nowo_barcode_input_widget %}
+    <nowo-barcode-input class="{{ barcode_container_class }}"
+         data-nowo-barcode-container="1"
+         data-nowo-barcode-enable-scanner="{{ barcode_enable_scanner ? '1' : '0' }}"
+         data-nowo-barcode-formats="{{ barcode_formats|join(',') }}"
+         data-nowo-barcode-facing-mode="{{ barcode_facing_mode }}">
+        <div class="nowo-barcode-input__row">
+            {{ block('form_widget_simple') }}
+            {% if barcode_enable_scanner %}
+                <button type="button"
+                        class="{{ barcode_button_class }}"
+                        data-nowo-barcode-scan-trigger
+                        {% if barcode_disabled %}disabled{% endif %}
+                        aria-label="{{ 'scan.button'|trans({}, 'NowoBarcodeInputBundle') }}">
+                    <span class="nowo-barcode-input__scan-icon" aria-hidden="true">&#128247;</span>
+                    <span class="nowo-barcode-input__scan-label">{{ 'scan.button'|trans({}, 'NowoBarcodeInputBundle') }}</span>
+                </button>
+            {% endif %}
+        </div>
+        {% if barcode_enable_scanner %}
+            <div class="nowo-barcode-input__scanner-overlay" hidden data-nowo-barcode-scanner>
+                <div class="nowo-barcode-input__scanner-panel" role="dialog" aria-modal="true" aria-label="{{ 'scan.dialog'|trans({}, 'NowoBarcodeInputBundle') }}">
+                    <video data-nowo-barcode-video playsinline muted></video>
+                    <p class="nowo-barcode-input__scanner-hint" data-nowo-barcode-scanner-hint>{{ 'scan.hint'|trans({}, 'NowoBarcodeInputBundle') }}</p>
+                    <button type="button" class="nowo-barcode-input__scanner-close" data-nowo-barcode-close>{{ 'scan.close'|trans({}, 'NowoBarcodeInputBundle') }}</button>
+                </div>
+            </div>
+        {% endif %}
+    </nowo-barcode-input>
+{% endblock %}

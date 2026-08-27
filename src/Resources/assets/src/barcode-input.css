@@ -1,0 +1,54 @@
+.nowo-barcode-input__row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.nowo-barcode-input__input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nowo-barcode-input__scan-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.nowo-barcode-input__scanner-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background: rgb(0 0 0 / 65%);
+}
+
+.nowo-barcode-input__scanner-overlay[hidden] {
+  display: none;
+}
+
+.nowo-barcode-input__scanner-panel {
+  width: min(92vw, 28rem);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / 25%);
+}
+
+.nowo-barcode-input__scanner-panel video {
+  width: 100%;
+  border-radius: 0.5rem;
+  background: #000;
+}
+
+.nowo-barcode-input__scanner-hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+}
+
+.nowo-barcode-input__scanner-close {
+  margin-top: 0.75rem;
+}

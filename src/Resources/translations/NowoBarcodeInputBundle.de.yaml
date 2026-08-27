@@ -1,0 +1,9 @@
+scan:
+  button: "Scannen"
+  close: "Schließen"
+  dialog: "Barcode-Scanner"
+  hint: "Richten Sie die Kamera auf einen Barcode"
+  error: "Kamera kann nicht geöffnet werden"
+
+field:
+  placeholder: "Barcode eingeben oder scannen"

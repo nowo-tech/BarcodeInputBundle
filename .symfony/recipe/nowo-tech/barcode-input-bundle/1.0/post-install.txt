@@ -1,0 +1,12 @@
+Barcode Input Bundle has been installed!
+
+The following file has been created:
+  - config/packages/nowo_barcode_input.yaml (configuration)
+
+Next steps:
+1. Publish assets: php bin/console assets:install
+2. Review default options in config/packages/nowo_barcode_input.yaml
+3. Use the form type in your forms:
+   Nowo\BarcodeInputBundle\Form\BarcodeType::class
+
+See docs/INSTALLATION.md and docs/CONFIGURATION.md for details.

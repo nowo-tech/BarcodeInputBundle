@@ -1,0 +1,9 @@
+scan:
+  button: "Scannen"
+  close: "Sluiten"
+  dialog: "Barcode-scanner"
+  hint: "Richt de camera op een barcode"
+  error: "Geen toegang tot de camera"
+
+field:
+  placeholder: "Voer een barcode in of scan er een"

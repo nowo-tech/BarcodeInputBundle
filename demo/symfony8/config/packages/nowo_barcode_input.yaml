@@ -1,0 +1,12 @@
+nowo_barcode_input:
+    enable_scanner: true
+    max_length: 128
+    trim_whitespace: true
+    formats:
+        - ean_13
+        - ean_8
+        - code_128
+        - code_39
+        - upc_a
+    facing_mode: environment
+    form_theme: bootstrap_5_layout.html.twig

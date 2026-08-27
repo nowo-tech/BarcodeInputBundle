@@ -1,0 +1,9 @@
+scan:
+  button: "Scanner"
+  close: "Fermer"
+  dialog: "Scanner de code-barres"
+  hint: "Pointez la caméra vers un code-barres"
+  error: "Impossible d'accéder à la caméra"
+
+field:
+  placeholder: "Saisir ou scanner un code-barres"
