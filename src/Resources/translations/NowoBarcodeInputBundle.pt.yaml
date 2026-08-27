@@ -1,0 +1,9 @@
+scan:
+  button: "Digitalizar"
+  close: "Fechar"
+  dialog: "Leitor de código de barras"
+  hint: "Aponte a câmara para um código de barras"
+  error: "Não foi possível aceder à câmara"
+
+field:
+  placeholder: "Introduza ou digitalize um código de barras"

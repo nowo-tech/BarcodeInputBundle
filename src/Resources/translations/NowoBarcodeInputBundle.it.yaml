@@ -1,0 +1,9 @@
+scan:
+  button: "Scansiona"
+  close: "Chiudi"
+  dialog: "Scanner codice a barre"
+  hint: "Punta la fotocamera verso un codice a barre"
+  error: "Impossibile accedere alla fotocamera"
+
+field:
+  placeholder: "Inserisci o scansiona un codice a barre"

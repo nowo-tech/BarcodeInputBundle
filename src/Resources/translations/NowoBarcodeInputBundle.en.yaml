@@ -1,0 +1,9 @@
+scan:
+  button: "Scan"
+  close: "Close"
+  dialog: "Barcode scanner"
+  hint: "Point the camera at a barcode"
+  error: "Unable to access the camera"
+
+field:
+  placeholder: "Enter or scan a barcode"

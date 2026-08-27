@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Nowo\BarcodeInputBundle\Form\BarcodeType:
+    arguments:
+      $defaultEnableScanner: '%nowo_barcode_input.enable_scanner%'
+      $defaultMaxLength: '%nowo_barcode_input.max_length%'
+      $defaultTrimWhitespace: '%nowo_barcode_input.trim_whitespace%'
+      $defaultFormats: '%nowo_barcode_input.formats%'
+      $defaultFacingMode: '%nowo_barcode_input.facing_mode%'
+    tags:
+      - { name: form.type }
