@@ -25,7 +25,7 @@
     "@zxing/browser": "^0.1.5"
   },
   "devDependencies": {
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.4.0",
     "@vitest/coverage-v8": "^3.2.6",
     "happy-dom": "^20.11.6",
     "typescript": "^7.0.2",
