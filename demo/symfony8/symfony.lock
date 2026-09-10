@@ -1,9 +1,12 @@
 {
-    "nowo-tech/otp-input-bundle": {
-        "version": "dev-main"
+    "nowo-tech/barcode-input-bundle": {
+        "version": "dev-master"
     },
     "nowo-tech/hot-reload-bundle": {
         "version": "v1.3.2"
+    },
+    "nowo-tech/otp-input-bundle": {
+        "version": "dev-main"
     },
     "nowo-tech/twig-inspector-bundle": {
         "version": "v1.0.22"
