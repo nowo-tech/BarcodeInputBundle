@@ -28,32 +28,33 @@ Use this checklist when cutting a new version. The workflow [.github/workflows/r
 
 5. **Commit**
    - Commit `docs/CHANGELOG.md`, `docs/UPGRADING.md` and any other release-related changes.
-   - Push to `main` (or merge your release branch).
+   - Push to `master` (or merge your release branch).
 
 ## Tag and push
 
-Replace `X.Y.Z` with the version (e.g. `1.0.0`):
+Replace `X.Y.Z` with the version (e.g. `1.0.1`):
 
 ```bash
-git checkout main
-git pull origin main
+git checkout master
+git pull origin master
 git tag -a vX.Y.Z -m "Release vX.Y.Z"
 git push origin vX.Y.Z
 ```
 
-- Tag format must be **`vX.Y.Z`** (e.g. `v1.0.0`) so the workflow and Packagist recognize it.
+- Default branch is **`master`**.
+- Tag format must be **`vX.Y.Z`** (e.g. `v1.0.1`) so the workflow and Packagist recognize it.
 - After the push, GitHub Actions creates the release and appends the changelog entry for that version to the release body.
 - Packagist will pick up the new tag automatically.
 
 After creating the release commit and tag, run `make check-no-cursor-coauthor` again **before** `git push` (REQ-GIT-001). The release commit itself is not covered by an earlier `release-check` run.
 
-### Example for v1.0.0
+### Example for v1.0.1
 
 After running `make release-check` and committing all changes (CHANGELOG, UPGRADING, docs, and any CS/test fixes):
 
 ```bash
-git checkout main
-git pull origin main
-git tag -a v1.0.0 -m "Release v1.0.0"
-git push origin v1.0.0
+git checkout master
+git pull origin master
+git tag -a v1.0.1 -m "Release v1.0.1"
+git push origin v1.0.1
 ```

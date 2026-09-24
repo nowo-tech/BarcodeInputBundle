@@ -17,12 +17,12 @@ use function trim;
  *
  * @implements DataTransformerInterface<string, string>
  */
-final class BarcodeValueTransformer implements DataTransformerInterface
+final readonly class BarcodeValueTransformer implements DataTransformerInterface
 {
     public function __construct(
-        private readonly int $maxLength = 128,
-        private readonly bool $trimWhitespace = true,
-        private readonly bool $stripNonPrintable = true,
+        private int $maxLength = 128,
+        private bool $trimWhitespace = true,
+        private bool $stripNonPrintable = true,
     ) {
     }
 

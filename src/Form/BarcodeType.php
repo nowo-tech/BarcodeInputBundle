@@ -80,15 +80,16 @@ final class BarcodeType extends AbstractType
             'max_length'          => $this->defaultMaxLength,
             'trim_whitespace'     => $this->defaultTrimWhitespace,
             'strip_non_printable' => true,
-            'formats'             => $this->defaultFormats,
-            'facing_mode'         => $this->defaultFacingMode,
-            'container_class'     => 'nowo-barcode-input__container',
-            'input_class'         => 'nowo-barcode-input__input',
-            'button_class'        => 'nowo-barcode-input__scan-button',
-            'autofocus'           => false,
-            'empty_data'          => '',
-            'required'            => false,
-            'translation_domain'  => 'NowoBarcodeInputBundle',
+            // Copy so OptionsResolver never aliases the shared service's array (FrankenPHP worker, reset_kernel=false).
+            'formats'            => [...$this->defaultFormats],
+            'facing_mode'        => $this->defaultFacingMode,
+            'container_class'    => 'nowo-barcode-input__container',
+            'input_class'        => 'nowo-barcode-input__input',
+            'button_class'       => 'nowo-barcode-input__scan-button',
+            'autofocus'          => false,
+            'empty_data'         => '',
+            'required'           => false,
+            'translation_domain' => 'NowoBarcodeInputBundle',
         ]);
 
         $resolver->setAllowedTypes('enable_scanner', ['bool']);

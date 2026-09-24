@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "/var/barcode-input-bundle",
-                "reference": "813b887c34bca33f2c91a019832e8cc3277eabf5"
+                "reference": "8780fc67c217e051995ba7da0e6c23f0128faa50"
             },
             "require": {
                 "php": ">=8.2 <8.6",
