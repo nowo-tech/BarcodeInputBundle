@@ -70,6 +70,7 @@ The value received in `barcode` is a single normalized string, for example `4017
 ### Additional documentation
 
 - [Demo notes](docs/DEMO-FRANKENPHP.md)
+- [FrankenPHP worker audit (`reset_kernel: false`)](docs/FRANKENPHP-WORKER-AUDIT.md)
 
 ## Tests and coverage
 

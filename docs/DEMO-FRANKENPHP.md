@@ -18,7 +18,7 @@ The **repository root** `docker-compose.yml` is for **bundle** development (PHP,
 
 To run the demo, follow the README inside `demo/symfony8`.
 
-This bundle is **FrankenPHP worker mode friendly** (see the main [README](../README.md) banner).
+This bundle is **FrankenPHP worker mode friendly** (see the main [README](../README.md) banner and the [worker audit](FRANKENPHP-WORKER-AUDIT.md) for `FRANKENPHP_RESET_KERNEL=false`).
 
 ## Switching classic vs worker (`FRANKENPHP_MODE`)
 

@@ -99,6 +99,39 @@ final class BarcodeTypeTest extends TestCase
         self::assertSame('nowo_barcode_input', $type->getBlockPrefix());
     }
 
+    /**
+     * Simulates FrankenPHP worker with FRANKENPHP_RESET_KERNEL=false: one shared
+     * BarcodeType instance serves consecutive form builds without services_resetter.
+     */
+    public function testSharedInstanceDoesNotLeakOptionsAcrossConsecutiveBuilds(): void
+    {
+        $type = new BarcodeType(
+            defaultFormats: ['ean_13', 'code_128'],
+            defaultFacingMode: 'environment',
+        );
+        $factory = Forms::createFormFactoryBuilder()
+            ->addType($type)
+            ->getFormFactory();
+
+        $view1 = $factory->create(BarcodeType::class, '', [
+            'formats'     => ['ean_8'],
+            'facing_mode' => 'user',
+        ])->createView();
+
+        $view2 = $factory->create(BarcodeType::class, '')->createView();
+
+        self::assertSame(['ean_8'], $view1->vars['barcode_formats']);
+        self::assertSame('user', $view1->vars['barcode_facing_mode']);
+        self::assertSame(['ean_13', 'code_128'], $view2->vars['barcode_formats']);
+        self::assertSame('environment', $view2->vars['barcode_facing_mode']);
+
+        $leaked   = $view2->vars['barcode_formats'];
+        $leaked[] = 'codabar';
+
+        $view3 = $factory->create(BarcodeType::class, '')->createView();
+        self::assertSame(['ean_13', 'code_128'], $view3->vars['barcode_formats']);
+    }
+
     public function testBuildViewMarksDisabledState(): void
     {
         $type                = new BarcodeType();
