@@ -7,10 +7,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.0.2] - 2026-09-27](#102---2026-09-27)
 - [[1.0.1] - 2026-09-24](#101---2026-09-24)
 - [[1.0.0] - 2026-08-27](#100---2026-08-27)
 
 ## [Unreleased]
+
+## [1.0.2] - 2026-09-27
+
+### Added
+
+- **REQ-CS-008:** `igor-php/igor-php` (require-dev only), root `igor.json`, Composer/`Makefile` `igor` target, and `release-check` wiring for FrankenPHP worker-state audit.
+
+[1.0.2]: https://github.com/nowo-tech/BarcodeInputBundle/releases/tag/v1.0.2
 
 ## [1.0.1] - 2026-09-24
 
