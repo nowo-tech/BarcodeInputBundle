@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **REQ-DEMO-013:** Playwright e2e under `demo/symfony8/e2e/` (`make test-e2e`), `demo-screenshots` target, and README gallery cropped to <nowo-barcode-input> (`docs/images/demo/overview.png`, `interaction.png`).
+
 ## [1.0.2] - 2026-09-27
 
 ### Added

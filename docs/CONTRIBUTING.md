@@ -14,6 +14,9 @@ This project follows the [Contributor Covenant Code of Conduct](../CODE_OF_CONDU
 Do **not** add `Co-authored-by: Cursor` or `cursoragent@cursor.com` trailers to commit messages.
 
 ```bash
+# Playwright e2e + README widget screenshots (REQ-DEMO-013)
+make -C demo/symfony8 test-e2e
+make -C demo/symfony8 demo-screenshots
 make setup-hooks
 make check-no-cursor-coauthor
 ```

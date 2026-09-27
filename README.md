@@ -48,7 +48,19 @@ The value received in `barcode` is a single normalized string, for example `4017
 
 ## Demo preview
 
-![Barcode Input Bundle demo](docs/images/barcode-demo.png)
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="docs/images/demo/overview.png" alt="Barcode field with camera scan button" />
+      <br /><sub>Barcode input + scan control</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="docs/images/demo/interaction.png" alt="Barcode field with scanned/typed code" />
+      <br /><sub>Code entered in the widget</sub>
+    </td>
+  </tr>
+</table>
+
 
 ## Documentation
 

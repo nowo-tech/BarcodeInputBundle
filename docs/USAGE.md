@@ -1,6 +1,17 @@
 # Usage
 
+## Screenshots
+
+| Overview | Interaction |
+|----------|-------------|
+| ![Barcode field with camera scan button](images/demo/overview.png) | ![Barcode field with scanned/typed code](images/demo/interaction.png) |
+
+Regenerate with `make -C demo/symfony8 demo-screenshots` (REQ-DEMO-013).
+
+
 ## Table of contents
+
+- [Screenshots](#screenshots)
 
 - [Form type](#form-type)
 - [Frontend script](#frontend-script)
