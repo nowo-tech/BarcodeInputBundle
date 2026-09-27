@@ -1,4 +1,4 @@
-.PHONY: up down build shell ensure-up install assets assets-test test test-coverage coverage-check test-ts cs-check cs-fix phpstan rector rector-dry qa composer-sync release-check release-check-demos demo-smoke validate-translations clean update validate check-no-cursor-coauthor check-open-prs strip-cursor-coauthor-from-history check-twig-extra
+.PHONY: up down build shell ensure-up install assets assets-test test test-coverage coverage-check test-ts cs-check cs-fix phpstan igor rector rector-dry qa composer-sync release-check release-check-demos demo-smoke validate-translations clean update validate check-no-cursor-coauthor check-open-prs strip-cursor-coauthor-from-history check-twig-extra
 
 COMPOSE_FILE ?= docker-compose.yml
 # Prefer Compose V2 plugin (GitHub Actions / modern Docker Desktop); fall back to docker-compose V1 (REQ-MAKE-010).
@@ -88,7 +88,11 @@ check-open-prs:
 check-twig-extra:
 	@chmod +x .scripts/check-twig-extra.sh
 	@./.scripts/check-twig-extra.sh
-release-check: check-no-cursor-coauthor check-open-prs check-twig-extra ensure-up composer-sync cs-fix cs-check rector-dry phpstan coverage-check release-check-demos test-ts
+
+# Run Igor worker-state audit (REQ-CS-008)
+igor: ensure-up
+	$(COMPOSE) exec -T php composer igor
+release-check: check-no-cursor-coauthor check-open-prs check-twig-extra ensure-up composer-sync cs-fix cs-check rector-dry phpstan igor coverage-check release-check-demos test-ts
 
 clean:
 	rm -rf vendor coverage coverage-ts .phpunit.cache coverage-php.txt coverage-ts.txt
