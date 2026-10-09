@@ -3,6 +3,16 @@
 
 ## Unreleased
 
+## To 1.0.3
+
+From **1.0.2** — dependency updates and demo Playwright e2e (REQ-DEMO-013).
+
+```bash
+composer update nowo-tech/barcode-input-bundle
+```
+
+- No breaking changes. No application upgrade steps.
+
 ## To 1.0.2
 
 From **1.0.1** — REQ-CS-008 Igor FrankenPHP worker audit (igor-php require-dev, igor.json, make igor).
