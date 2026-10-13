@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## To 1.1.0
+
+From **1.0.4** — asset prepend guarded, over-long barcodes rejected, strict config, Symfony >=6.4.
+
+```bash
+composer update nowo-tech/barcode-input-bundle
+```
+
+- Over-long barcodes now make the field invalid instead of being silently truncated.
+- Unknown `form_theme` or `formats` values are rejected. `symfony/asset` is now required; Symfony 6.4 is the minimum.
+
 ## To 1.0.4
 
 From **1.0.3** — dependency refresh and repository maintenance.

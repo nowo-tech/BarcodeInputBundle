@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.1.0] - 2026-10-13](#110---2026-10-13)
 - [[1.0.4] - 2026-10-13](#104---2026-10-13)
 - [[1.0.3] - 2026-10-09](#103---2026-10-09)
 - [[1.0.2] - 2026-09-27](#102---2026-09-27)
@@ -14,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - [[1.0.0] - 2026-08-27](#100---2026-08-27)
 
 ## [Unreleased]
+
+## [1.1.0] - 2026-10-13
 
 ### Fixed
 
@@ -26,6 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `form_theme` is now an enum: unknown values are rejected at config time (they used to fall back silently to `form_div_layout.html.twig`).
 - `formats` (bundle config and the `formats` form option) only accepts supported symbologies (`ean_13`, `ean_8`, `upc_a`, `upc_e`, `code_128`, `code_39`, `itf`, `codabar`) and must not be empty.
 - Minimum Symfony version raised from 6.0 to **6.4** (`^6.4 || ^7.0 || ^8.0`); older 6.x releases were never tested.
+
+[1.1.0]: https://github.com/nowo-tech/BarcodeInputBundle/releases/tag/v1.1.0
 
 ## [1.0.4] - 2026-10-13
 
