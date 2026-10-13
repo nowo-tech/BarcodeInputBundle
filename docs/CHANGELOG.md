@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.0.4] - 2026-10-13](#104---2026-10-13)
 - [[1.0.3] - 2026-10-09](#103---2026-10-09)
 - [[1.0.2] - 2026-09-27](#102---2026-09-27)
 - [[1.0.1] - 2026-09-24](#101---2026-09-24)
@@ -14,9 +15,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-10-13
+
 ### Changed
 
 - Development: `composer.json` pins `config.platform.php` to 8.2.0 so the committed lock stays installable on the minimum PHP; CI overrides the platform per matrix cell.
+
+### Dependencies
+
+- `vite` 8.3.2 → 8.3.4 (frontend tooling; #29).
+- `happy-dom` 20.14.5 → 20.14.6 (frontend tooling; #31).
+- `@types/node` 26.6.4 → 26.6.5 (frontend tooling; #30).
+
+[1.0.4]: https://github.com/nowo-tech/BarcodeInputBundle/releases/tag/v1.0.4
 
 ## [1.0.3] - 2026-10-09
 
