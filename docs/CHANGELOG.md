@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.1.1] - 2026-10-13](#111---2026-10-13)
 - [[1.1.0] - 2026-10-13](#110---2026-10-13)
 - [[1.0.4] - 2026-10-13](#104---2026-10-13)
 - [[1.0.3] - 2026-10-09](#103---2026-10-09)
@@ -16,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-10-13
+
 ### Changed
 
 - CI: the test matrix now includes Symfony 6.4, the lowest version allowed by `composer.json`.
@@ -23,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Development: `vitest` and `@vitest/coverage-v8` upgraded to 4.x (the `@zxing/browser` constructor mock now uses a `function` implementation).
 - Demo: regenerated `config/reference.php` (strict `form_theme` enum).
 - Tests: unsupported model values of `BarcodeValueTransformer::transform()` moved to a data provider so PHPStan passes (the inline `/* @var mixed */` cast was not a PHPDoc).
+
+[1.1.1]: https://github.com/nowo-tech/BarcodeInputBundle/releases/tag/v1.1.1
 
 ## [1.1.0] - 2026-10-13
 

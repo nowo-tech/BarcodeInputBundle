@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## To 1.1.1
+
+From **1.1.0** — CI covers Symfony 6.4, demo smoke workflow, vitest 4.
+
+```bash
+composer update nowo-tech/barcode-input-bundle
+```
+
+- No application upgrade steps.
+
 ## To 1.1.0
 
 From **1.0.4** — asset prepend guarded, over-long barcodes rejected, strict config, Symfony >=6.4.
