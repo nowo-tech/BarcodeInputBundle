@@ -54,7 +54,7 @@ final class NowoBarcodeInputExtension extends Extension implements PrependExtens
             ]);
         }
 
-        // framework.assets is only valid when symfony/asset is installed (optional dependency).
+        // framework.assets is only valid when symfony/asset is installed (required since 1.1.0; kept as a guard).
         if ($container->hasExtension('framework') && class_exists(Package::class)) {
             $container->prependExtensionConfig('framework', [
                 'assets' => [
