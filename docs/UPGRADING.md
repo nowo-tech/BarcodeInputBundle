@@ -1,5 +1,18 @@
 # Upgrading
 
+## Table of contents
+
+- [Unreleased](#unreleased)
+- [To 1.1.1](#to-111)
+- [To 1.1.0](#to-110)
+- [To 1.0.4](#to-104)
+- [To 1.0.3](#to-103)
+- [To 1.0.2](#to-102)
+- [1.0.1](#101)
+  - [Notable (non-breaking)](#notable-non-breaking)
+- [1.0.0 (initial release)](#100-initial-release)
+  - [Integration checklist](#integration-checklist)
+
 ## Unreleased
 
 ## To 1.1.1
