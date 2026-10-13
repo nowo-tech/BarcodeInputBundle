@@ -51,11 +51,11 @@ The value received in `barcode` is a single normalized string, for example `4017
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="docs/images/demo/overview.png" alt="Barcode field with camera scan button" />
+      <img src="docs/images/demo/overview.webp" alt="Barcode field with camera scan button" />
       <br /><sub>Barcode input + scan control</sub>
     </td>
     <td align="center" width="50%">
-      <img src="docs/images/demo/interaction.png" alt="Barcode field with scanned/typed code" />
+      <img src="docs/images/demo/interaction.webp" alt="Barcode field with scanned/typed code" />
       <br /><sub>Code entered in the widget</sub>
     </td>
   </tr>

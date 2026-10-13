@@ -3,7 +3,7 @@
 help:
 	@echo "Symfony 8 Demo - Barcode Input Bundle"
 	@echo "  make test-e2e       Playwright e2e (REQ-DEMO-013)"
-	@echo "  make demo-screenshots  Refresh docs/images/demo/*.png"
+	@echo "  make demo-screenshots  Refresh docs/images/demo/*.webp"
 
 up:
 	@if [ ! -f .env ]; then cp .env.example .env 2>/dev/null || true; fi
@@ -85,6 +85,6 @@ demo-screenshots: ensure-up
 		-e DEMO_BASE_URL=http://127.0.0.1:$$PORT \
 		-e SCREENSHOT_DIR=/screenshots \
 		$(PLAYWRIGHT_IMAGE) \
-		bash -lc 'npm install --no-fund --no-audit && npx playwright test --project=screenshots'
-	@echo "Screenshots written under docs/images/demo/"
+		bash -lc 'npm install --no-fund --no-audit && npx playwright test --project=screenshots && node scripts/to-webp.mjs /screenshots'
+	@echo "Screenshots written under docs/images/demo/ (WebP)"
 
