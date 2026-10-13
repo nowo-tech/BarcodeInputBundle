@@ -15,6 +15,23 @@ final class Configuration implements ConfigurationInterface
 {
     public const ALIAS = 'nowo_barcode_input';
 
+    /**
+     * Supported Symfony form layouts (each one maps to a bundle theme).
+     */
+    public const FORM_THEMES = [
+        'form_div_layout.html.twig',
+        'form_table_layout.html.twig',
+        'bootstrap_5_layout.html.twig',
+        'bootstrap_5_horizontal_layout.html.twig',
+        'bootstrap_4_layout.html.twig',
+        'bootstrap_4_horizontal_layout.html.twig',
+        'bootstrap_3_layout.html.twig',
+        'bootstrap_3_horizontal_layout.html.twig',
+        'foundation_5_layout.html.twig',
+        'foundation_6_layout.html.twig',
+        'tailwind_2_layout.html.twig',
+    ];
+
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder(self::ALIAS);
@@ -40,11 +57,15 @@ final class Configuration implements ConfigurationInterface
                     ->defaultValue(['ean_13', 'ean_8', 'code_128', 'code_39', 'upc_a'])
                     ->info('Supported symbologies for camera scanner hints')
                     ->validate()
+                        ->ifTrue(static fn (array $formats): bool => $formats === [])
+                        ->thenInvalid('formats must contain at least one supported symbology')
+                    ->end()
+                    ->validate()
                         ->ifTrue(static fn (array $formats): bool => array_filter(
                             $formats,
-                            static fn (mixed $format): bool => is_string($format) && in_array($format, BarcodeFormat::values(), true),
-                        ) === [])
-                        ->thenInvalid('formats must contain at least one supported symbology')
+                            static fn (mixed $format): bool => !is_string($format) || !in_array($format, BarcodeFormat::values(), true),
+                        ) !== [])
+                        ->thenInvalid('formats contains an unsupported symbology %s (allowed: ' . implode(', ', BarcodeFormat::values()) . ')')
                     ->end()
                 ->end()
                 ->enumNode('facing_mode')
@@ -52,7 +73,8 @@ final class Configuration implements ConfigurationInterface
                     ->defaultValue('environment')
                     ->info('Camera facing mode when scanning: environment (rear) or user (front)')
                 ->end()
-                ->scalarNode('form_theme')
+                ->enumNode('form_theme')
+                    ->values(self::FORM_THEMES)
                     ->defaultValue('form_div_layout.html.twig')
                     ->info('Twig form theme mapped to bundle themes')
                 ->end()

@@ -6,6 +6,7 @@ namespace Nowo\BarcodeInputBundle\Tests\Unit\DependencyInjection;
 
 use Nowo\BarcodeInputBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 
 /**
@@ -51,5 +52,31 @@ final class ConfigurationTest extends TestCase
         self::assertSame(['code_39', 'itf'], $config['formats']);
         self::assertSame('user', $config['facing_mode']);
         self::assertSame('bootstrap_5_layout.html.twig', $config['form_theme']);
+    }
+
+    public function testRejectsUnknownFormTheme(): void
+    {
+        $this->expectException(InvalidConfigurationException::class);
+        (new Processor())->processConfiguration(new Configuration(), [[
+            'form_theme' => 'my_theme.html.twig',
+        ]]);
+    }
+
+    public function testRejectsUnsupportedFormatEvenWhenMixedWithSupportedOnes(): void
+    {
+        $this->expectException(InvalidConfigurationException::class);
+        $this->expectExceptionMessage('unsupported symbology');
+        (new Processor())->processConfiguration(new Configuration(), [[
+            'formats' => ['ean_13', 'qr_code'],
+        ]]);
+    }
+
+    public function testRejectsEmptyFormats(): void
+    {
+        $this->expectException(InvalidConfigurationException::class);
+        $this->expectExceptionMessage('at least one supported symbology');
+        (new Processor())->processConfiguration(new Configuration(), [[
+            'formats' => [],
+        ]]);
     }
 }

@@ -15,6 +15,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- The bundle prepended `framework.assets.packages` even when `symfony/asset` was not installed, which broke container compilation (`assets` config requires the component). `symfony/asset` is now a dependency and the prepend is guarded with `class_exists(Package::class)`.
+- `BarcodeValueTransformer` no longer silently truncates submitted values longer than `max_length`: the field becomes invalid ("This value is too long…") instead. Existing model values are no longer truncated when rendered.
+- `BarcodeValueTransformer::transform()` now renders `int`, `float` and `Stringable` model values instead of an empty string.
+
+### Changed
+
+- `form_theme` is now an enum: unknown values are rejected at config time (they used to fall back silently to `form_div_layout.html.twig`).
+- `formats` (bundle config and the `formats` form option) only accepts supported symbologies (`ean_13`, `ean_8`, `upc_a`, `upc_e`, `code_128`, `code_39`, `itf`, `codabar`) and must not be empty.
+- Minimum Symfony version raised from 6.0 to **6.4** (`^6.4 || ^7.0 || ^8.0`); older 6.x releases were never tested.
+
 ## [1.0.4] - 2026-10-13
 
 ### Changed

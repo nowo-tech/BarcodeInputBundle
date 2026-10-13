@@ -97,7 +97,9 @@ final class BarcodeType extends AbstractType
         $resolver->setAllowedValues('max_length', static fn (int $length): bool => $length >= 1 && $length <= 256);
         $resolver->setAllowedTypes('trim_whitespace', ['bool']);
         $resolver->setAllowedTypes('strip_non_printable', ['bool']);
-        $resolver->setAllowedTypes('formats', ['array']);
+        $resolver->setAllowedTypes('formats', ['string[]']);
+        $resolver->setAllowedValues('formats', static fn (array $formats): bool => $formats !== []
+            && array_diff($formats, BarcodeFormat::values()) === []);
         $resolver->setAllowedTypes('facing_mode', ['string']);
         $resolver->setAllowedValues('facing_mode', ['environment', 'user']);
         $resolver->setAllowedTypes('container_class', ['string']);

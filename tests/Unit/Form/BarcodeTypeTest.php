@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 
 /**
  * @covers \Nowo\BarcodeInputBundle\Form\BarcodeType
@@ -51,7 +52,29 @@ final class BarcodeTypeTest extends TestCase
         $form = $factory->create(BarcodeType::class, '', ['max_length' => 8]);
         $form->submit('1234567890123');
 
-        self::assertSame('12345678', $form->getData());
+        self::assertFalse($form->isSynchronized());
+        self::assertNotSame('12345678', $form->getData());
+        self::assertNotNull($form->getTransformationFailure());
+    }
+
+    public function testRejectsUnsupportedFormatsOption(): void
+    {
+        $factory = Forms::createFormFactoryBuilder()
+            ->addType(new BarcodeType())
+            ->getFormFactory();
+
+        $this->expectException(InvalidOptionsException::class);
+        $factory->create(BarcodeType::class, '', ['formats' => ['ean_13', 'qr_code']]);
+    }
+
+    public function testRejectsEmptyFormatsOption(): void
+    {
+        $factory = Forms::createFormFactoryBuilder()
+            ->addType(new BarcodeType())
+            ->getFormFactory();
+
+        $this->expectException(InvalidOptionsException::class);
+        $factory->create(BarcodeType::class, '', ['formats' => []]);
     }
 
     public function testBuildViewExposesBarcodeVariablesAndDataAttributes(): void

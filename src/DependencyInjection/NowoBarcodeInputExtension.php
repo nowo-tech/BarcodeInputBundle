@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nowo\BarcodeInputBundle\DependencyInjection;
 
+use Symfony\Component\Asset\Package;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -53,7 +54,8 @@ final class NowoBarcodeInputExtension extends Extension implements PrependExtens
             ]);
         }
 
-        if ($container->hasExtension('framework')) {
+        // framework.assets is only valid when symfony/asset is installed (optional dependency).
+        if ($container->hasExtension('framework') && class_exists(Package::class)) {
             $container->prependExtensionConfig('framework', [
                 'assets' => [
                     'packages' => [

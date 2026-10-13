@@ -54,9 +54,9 @@ The script defines the `<nowo-barcode-input>` custom element and initializes leg
 ## Customization
 
 - `enable_scanner`: show camera scan button when true
-- `max_length`: maximum characters (1–256)
+- `max_length`: maximum characters (1–256); longer submissions fail validation instead of being truncated
 - `trim_whitespace` / `strip_non_printable`: server-side normalization
-- `formats`: symbology hints for camera scanning (`ean_13`, `ean_8`, `upc_a`, `code_128`, `code_39`, `itf`, `codabar`)
+- `formats`: non-empty list of symbology hints for camera scanning (`ean_13`, `ean_8`, `upc_a`, `upc_e`, `code_128`, `code_39`, `itf`, `codabar`); unknown values throw `InvalidOptionsException`
 - `facing_mode`: `environment` (rear) or `user` (front) camera
 - `container_class`, `input_class`, `button_class`: CSS hooks
 - `autofocus`: focus the text input on load

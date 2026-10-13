@@ -9,6 +9,7 @@ use Nowo\BarcodeInputBundle\Form\DataTransformer\BarcodeValueTransformer;
 use Nowo\BarcodeInputBundle\NowoBarcodeInputBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Form\Exception\TransformationFailedException;
 
 /**
  * @covers \Nowo\BarcodeInputBundle\NowoBarcodeInputBundle
@@ -42,11 +43,12 @@ final class NowoBarcodeInputBundleTest extends TestCase
         self::assertSame('40170725', $transformer->transform('40170725'));
     }
 
-    public function testTransformerTruncatesToMaxLength(): void
+    public function testTransformerRejectsValuesOverMaxLength(): void
     {
         $transformer = new BarcodeValueTransformer(8, true, true);
 
-        self::assertSame('12345678', $transformer->reverseTransform('1234567890'));
+        $this->expectException(TransformationFailedException::class);
+        $transformer->reverseTransform('1234567890');
     }
 
     public function testTransformerHandlesEmptyInput(): void

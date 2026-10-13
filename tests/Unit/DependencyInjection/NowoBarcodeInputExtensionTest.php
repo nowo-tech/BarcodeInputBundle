@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Nowo\BarcodeInputBundle\Tests\Unit\DependencyInjection;
 
+use Nowo\BarcodeInputBundle\DependencyInjection\Configuration;
 use Nowo\BarcodeInputBundle\DependencyInjection\NowoBarcodeInputExtension;
 use PHPUnit\Framework\TestCase;
+use ReflectionClassConstant;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 
@@ -90,9 +93,16 @@ final class NowoBarcodeInputExtensionTest extends TestCase
         $container2->prependExtensionConfig('nowo_barcode_input', [
             'form_theme' => 'unknown_theme.html.twig',
         ]);
+        $this->expectException(InvalidConfigurationException::class);
         $extension->prepend($container2);
-        $twigConfigs2 = $container2->getExtensionConfig('twig');
-        self::assertSame('@NowoBarcodeInputBundle/Form/barcode_input_theme.html.twig', $twigConfigs2[0]['form_themes'][0]);
+    }
+
+    public function testEveryConfigurableFormThemeIsMapped(): void
+    {
+        $map = (new ReflectionClassConstant(NowoBarcodeInputExtension::class, 'FORM_THEME_MAP'))->getValue();
+
+        self::assertIsArray($map);
+        self::assertSame(Configuration::FORM_THEMES, array_keys($map));
     }
 
     public function testPrependAddsNamedAssetPackageWhenFrameworkExtensionPresent(): void

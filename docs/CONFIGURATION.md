@@ -31,11 +31,11 @@ nowo_barcode_input:
 | Key | Type | Default | Description |
 | --- | --- | --- | --- |
 | `enable_scanner` | bool | `true` | Show the camera scan button in the widget. |
-| `max_length` | int | `128` | Maximum barcode length (1–256). |
+| `max_length` | int | `128` | Maximum barcode length (1–256). Longer submissions make the field invalid (never truncated). |
 | `trim_whitespace` | bool | `true` | Trim leading/trailing whitespace on submit. |
-| `formats` | list | see above | Supported symbologies for scanner hints. |
+| `formats` | list | see above | Supported symbologies for scanner hints. Non-empty; unknown values are rejected. |
 | `facing_mode` | string | `environment` | Camera facing mode: `environment` or `user`. |
-| `form_theme` | string | `form_div_layout.html.twig` | Twig form theme mapped to bundle themes. |
+| `form_theme` | enum | `form_div_layout.html.twig` | Twig form theme mapped to bundle themes (see the list below; other values are rejected). |
 
 ## form_theme
 
