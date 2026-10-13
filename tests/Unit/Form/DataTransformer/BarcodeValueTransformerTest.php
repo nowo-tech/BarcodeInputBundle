@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Nowo\BarcodeInputBundle\Tests\Unit\Form\DataTransformer;
 
 use Nowo\BarcodeInputBundle\Form\DataTransformer\BarcodeValueTransformer;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Stringable;
 use Symfony\Component\Form\Exception\TransformationFailedException;
@@ -54,10 +55,21 @@ final class BarcodeValueTransformerTest extends TestCase
                 return ' ABC-1 ';
             }
         }));
-        foreach ([true, ['x']] as $unsupported) {
-            /* @var mixed $unsupported */
-            self::assertSame('', $transformer->transform($unsupported));
-        }
+    }
+
+    /**
+     * @return iterable<string, array{mixed}>
+     */
+    public static function unsupportedModelValues(): iterable
+    {
+        yield 'bool' => [true];
+        yield 'array' => [['x']];
+    }
+
+    #[DataProvider('unsupportedModelValues')]
+    public function testTransformReturnsEmptyStringForUnsupportedModelValues(mixed $value): void
+    {
+        self::assertSame('', (new BarcodeValueTransformer())->transform($value));
     }
 
     public function testTransformDoesNotTruncateExistingModelData(): void

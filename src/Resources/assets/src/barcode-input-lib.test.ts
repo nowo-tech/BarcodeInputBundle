@@ -13,12 +13,15 @@ import {
 } from './barcode-input-lib';
 
 vi.mock('@zxing/browser', () => ({
-  BrowserMultiFormatReader: vi.fn().mockImplementation(() => ({
-    decodeFromConstraints: vi.fn().mockResolvedValue({
-      stop: vi.fn(),
-    }),
-    reset: vi.fn(),
-  })),
+  // Vitest 4: a mock used with `new` needs a `function`/`class` implementation.
+  BrowserMultiFormatReader: vi.fn().mockImplementation(function () {
+    return {
+      decodeFromConstraints: vi.fn().mockResolvedValue({
+        stop: vi.fn(),
+      }),
+      reset: vi.fn(),
+    };
+  }),
 }));
 
 describe('barcode-input-lib helpers', () => {

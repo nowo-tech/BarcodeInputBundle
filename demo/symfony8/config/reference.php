@@ -757,7 +757,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     trim_whitespace?: bool|Param, // Trim leading and trailing whitespace on submit // Default: true
  *     formats?: list<scalar|Param|null>,
  *     facing_mode?: "environment"|"user"|Param, // Camera facing mode when scanning: environment (rear) or user (front) // Default: "environment"
- *     form_theme?: scalar|Param|null, // Twig form theme mapped to bundle themes // Default: "form_div_layout.html.twig"
+ *     form_theme?: "form_div_layout.html.twig"|"form_table_layout.html.twig"|"bootstrap_5_layout.html.twig"|"bootstrap_5_horizontal_layout.html.twig"|"bootstrap_4_layout.html.twig"|"bootstrap_4_horizontal_layout.html.twig"|"bootstrap_3_layout.html.twig"|"bootstrap_3_horizontal_layout.html.twig"|"foundation_5_layout.html.twig"|"foundation_6_layout.html.twig"|"tailwind_2_layout.html.twig"|Param, // Twig form theme mapped to bundle themes // Default: "form_div_layout.html.twig"
  * }
  * @psalm-type NowoHotReloadConfig = array{
  *     enabled?: bool|Param, // Master switch. When false, nothing is injected even if FRANKENPHP_HOT_RELOAD is set. // Default: true

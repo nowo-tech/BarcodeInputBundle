@@ -16,6 +16,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- CI: the test matrix now includes Symfony 6.4, the lowest version allowed by `composer.json`.
+- CI: new `Demo smoke` workflow (`make demo-smoke`: boots the Symfony 8 demo and checks HTTP 2xx/3xx) on tags, weekly and on demand, like the sibling form bundles.
+- Development: `vitest` and `@vitest/coverage-v8` upgraded to 4.x (the `@zxing/browser` constructor mock now uses a `function` implementation).
+- Demo: regenerated `config/reference.php` (strict `form_theme` enum).
+- Tests: unsupported model values of `BarcodeValueTransformer::transform()` moved to a data provider so PHPStan passes (the inline `/* @var mixed */` cast was not a PHPDoc).
+
 ## [1.1.0] - 2026-10-13
 
 ### Fixed
