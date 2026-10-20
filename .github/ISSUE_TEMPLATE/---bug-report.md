@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 <!--
-- Please do not report an issue for a version of `barcode-input-bundle` that is no longer supported.
+- Please do not report an issue for a version of `barcode-input-bundle` that is no longer supported. Currently supported versions are listed here: https://github.com/nowo-tech/BarcodeInputBundle#version-information
 - Please fill in this template according to your issue.
 - Please keep the table shown below at the top of your issue.
 - You can retrieve `barcode-input-bundle` version by running `composer info | grep "barcode-input-bundle"`.
@@ -17,10 +17,11 @@ assignees: ''
 - Please remove this comment before submitting your issue.
 -->
 
-| Q                              | A
-| -------------------------------| -----------------------
-| `BarcodeInputBundle` version   | x.y.z
-| PHP version                    | x.y.z
+| Q                           | A
+| ----------------------------| -----------------------
+| `BarcodeInputBundle` version        | x.y.z
+| PHP version                 | x.y.z
+| Database                    | MySQL / PostgreSQL / SQLite / Other
 
 #### Summary
 
@@ -28,12 +29,12 @@ assignees: ''
 
 #### Current behavior
 
-<!-- Explain step-by-step how to reproduce the problem. -->
+<!-- What is the current (buggy) behavior? -->
+
+#### How to reproduce
+
+<!-- Provide steps to reproduce the bug. -->
 
 #### Expected behavior
 
-<!-- Explain what you expected to happen instead. -->
-
-#### Possible Solution
-
-<!-- Optional. Suggest a fix/reason for the bug. -->
+<!-- What was the expected (correct) behavior? -->

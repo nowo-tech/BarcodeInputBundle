@@ -1,6 +1,8 @@
 # Barcode Input Bundle — Demo (Symfony 8)
 
-This demo runs with **FrankenPHP** (Caddy, HTTP on port 80). In **dev** (`APP_ENV=dev`), worker mode is disabled so each request runs in a new PHP process and **code/template changes are visible on refresh** without restarting the container.
+This demo runs with **FrankenPHP** (Caddy, HTTP on port 80). The runtime is selected by `FRANKENPHP_MODE` in `.env`: `worker` (default, worker Caddyfile with `watch`) or `classic` (`Caddyfile.dev`, one PHP process per request, code/template changes visible on refresh).
+
+See [FrankenPHP demo guide](../../docs/DEMO-FRANKENPHP.md) for development and production start, mode switching and troubleshooting.
 
 ## Quick start
 

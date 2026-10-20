@@ -1,4 +1,4 @@
-name: barcode-input-demo-symfony8
+name: barcode-input-bundle-demo-symfony-8
 
 services:
   php:

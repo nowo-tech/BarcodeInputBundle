@@ -2,7 +2,7 @@
 
 **Baseline spec**: [`spec.md`](spec.md)  
 **Package**: `nowo-tech/barcode-input-bundle`  
-**Last audited**: 2026-08-27
+**Last audited**: 2026-10-20
 
 This file proves that **every source artifact** under `src/` is referenced by the baseline specification. Co-located Vitest files enforce frontend contracts; PHPUnit covers PHP under `tests/`.
 
