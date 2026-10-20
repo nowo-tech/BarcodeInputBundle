@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.1.3] - 2026-10-20](#113---2026-10-20)
 - [[1.1.2] - 2026-10-20](#112---2026-10-20)
 - [[1.1.1] - 2026-10-13](#111---2026-10-13)
 - [[1.1.0] - 2026-10-13](#110---2026-10-13)
@@ -17,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - [[1.0.0] - 2026-08-27](#100---2026-08-27)
 
 ## [Unreleased]
+
+## [1.1.3] - 2026-10-20
+
+Release-check chain, TypeScript coverage gate, demo smoke HTTP 200, demo Caddyfile path, PHPDoc. See [UPGRADING](UPGRADING.md#to-113).
 
 ### Changed
 
@@ -33,6 +38,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Demo entrypoint copies the mode-specific Caddyfile to `/etc/frankenphp/Caddyfile`, the file `frankenphp run` actually reads (it used `/etc/caddy/Caddyfile`, so worker-mode edits were ignored until rebuild) (REQ-DEMO-010).
 - `.scripts/check-no-cursor-coauthor.sh` also runs inside git worktrees (`.git` file instead of directory).
 - `pnpm install --frozen-lockfile` works again: the `vite` override is scoped to `vite@<6.4.3` so it no longer rewrites the direct `vite` dev dependency (the lock file was out of sync with `package.json`).
+
+[1.1.3]: https://github.com/nowo-tech/BarcodeInputBundle/releases/tag/v1.1.3
 
 ## [1.1.2] - 2026-10-20
 
