@@ -27,4 +27,15 @@ describe('nowo-barcode-input-element', () => {
 
     expect(container.getAttribute('data-nowo-barcode-init')).toBe('1');
   });
+
+  it('initializes on connect and clears the init flag on disconnect', () => {
+    const element = document.createElement(TAG_NOWO_BARCODE_INPUT);
+    element.innerHTML = '<input data-controller="nowo-barcode-input" />';
+
+    document.body.appendChild(element);
+    expect(element.getAttribute('data-nowo-barcode-init')).toBe('1');
+
+    element.remove();
+    expect(element.getAttribute('data-nowo-barcode-init')).toBeNull();
+  });
 });

@@ -13,8 +13,16 @@ export default defineConfig({
         'src/Resources/assets/src/barcode-input.ts',
         'src/Resources/assets/src/barcode-input-lib.ts',
         'src/Resources/assets/src/nowo-barcode-input-element.ts',
+        'src/Resources/assets/src/logger.ts',
       ],
       exclude: ['**/*.test.ts', '**/node_modules/**'],
+      // REQ-TEST-003: TS coverage gate (≥ 90%); `vitest run --coverage` exits non-zero below it.
+      thresholds: {
+        lines: 90,
+        statements: 90,
+        functions: 90,
+        branches: 90,
+      },
     },
   },
 });

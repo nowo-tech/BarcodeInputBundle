@@ -21,6 +21,8 @@ enum BarcodeFormat: string
     case Codabar = 'codabar';
 
     /**
+     * Returns every supported symbology value.
+     *
      * @return list<string>
      */
     public static function values(): array
@@ -29,6 +31,8 @@ enum BarcodeFormat: string
     }
 
     /**
+     * Maps format strings to cases, ignoring unknown ones; falls back to the default set when none match.
+     *
      * @param list<string> $formats
      *
      * @return list<self>

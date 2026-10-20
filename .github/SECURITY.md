@@ -10,34 +10,16 @@
 
 We take the security of BarcodeInputBundle seriously. If you believe you have found a security vulnerability, please report it privately:
 
-### How to Report
-
-**Please do not report security vulnerabilities through public GitHub issues.**
-
 - **Email**: hectorfranco@nowo.tech
+- **Do not** open a public GitHub issue for security-sensitive bugs.
 
-Include the following information in your report:
+Please include:
 
-- Type of issue (e.g. XSS, injection, etc.)
-- Full paths of source file(s) related to the issue
-- The location of the affected source code (tag/branch/commit or direct URL)
-- Any special configuration required to reproduce the issue
-- Step-by-step instructions to reproduce the issue
-- Proof-of-concept or exploit code (if possible)
-- Impact of the issue, including how an attacker might exploit it
-
-### Response Timeline
-
-- **Initial Response**: Within 48 hours
-- **Status Update**: Within 7 days
-- **Resolution**: Varies depending on complexity
-
-### Disclosure Policy
-
-- We will confirm receipt of your vulnerability report
-- We will work with you to understand and validate the issue
-- We will develop and release a fix as quickly as possible
-- We will publicly acknowledge your responsible disclosure (if desired)
+- Type of issue (e.g., injection, XSS, auth bypass, deserialization risk, etc.)
+- Affected file(s) and version/tag/commit
+- Steps to reproduce
+- Impact assessment
+- PoC (if available)
 
 ## Response Timeline
 

@@ -11,8 +11,14 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use function in_array;
 use function is_string;
 
+/**
+ * Configuration tree for `nowo_barcode_input` (scanner defaults, max length, formats, facing mode, form theme).
+ */
 final class Configuration implements ConfigurationInterface
 {
+    /**
+     * Bundle configuration root key and parameter prefix.
+     */
     public const ALIAS = 'nowo_barcode_input';
 
     /**
@@ -32,6 +38,11 @@ final class Configuration implements ConfigurationInterface
         'tailwind_2_layout.html.twig',
     ];
 
+    /**
+     * Builds the validated configuration tree.
+     *
+     * @return TreeBuilder Tree rooted at `nowo_barcode_input`
+     */
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder(self::ALIAS);

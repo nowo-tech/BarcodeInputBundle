@@ -86,7 +86,7 @@ The value received in `barcode` is a single normalized string, for example `4017
 ## Tests and coverage
 
 - PHP: 100%
-- TS/JS: 100%
+- TS/JS: 94.8% (Vitest; lowest of statements/branches/functions/lines — lines 100%, branches 94.8%; CI gate 90%)
 - Python: N/A
 
 ## License

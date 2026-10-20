@@ -25,6 +25,11 @@ use function trim;
  */
 final readonly class BarcodeValueTransformer implements DataTransformerInterface
 {
+    /**
+     * @param int $maxLength Maximum accepted length after normalization
+     * @param bool $trimWhitespace Trim leading and trailing whitespace
+     * @param bool $stripNonPrintable Remove characters outside printable ASCII
+     */
     public function __construct(
         private int $maxLength = 128,
         private bool $trimWhitespace = true,
@@ -32,6 +37,13 @@ final readonly class BarcodeValueTransformer implements DataTransformerInterface
     ) {
     }
 
+    /**
+     * Converts the model value (string, number or Stringable) into the normalized view string.
+     *
+     * @param mixed $value Model value
+     *
+     * @return string Normalized string ('' for unsupported values)
+     */
     public function transform(mixed $value): string
     {
         if (is_int($value) || is_float($value) || $value instanceof Stringable) {
@@ -45,6 +57,15 @@ final readonly class BarcodeValueTransformer implements DataTransformerInterface
         return $this->normalize($value);
     }
 
+    /**
+     * Normalizes the submitted string and rejects values longer than `maxLength`.
+     *
+     * @param mixed $value Submitted view value
+     *
+     * @throws TransformationFailedException When the normalized barcode exceeds `maxLength`
+     *
+     * @return string Normalized barcode
+     */
     public function reverseTransform(mixed $value): string
     {
         if (!is_string($value)) {

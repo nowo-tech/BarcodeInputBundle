@@ -13,12 +13,18 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
+ * Barcode text field with optional camera scanning (rendered as the `nowo-barcode-input` element).
+ *
  * @extends AbstractType<string>
  */
 final class BarcodeType extends AbstractType
 {
     /**
-     * @param list<string> $defaultFormats
+     * @param bool $defaultEnableScanner Default for the `enable_scanner` option
+     * @param int $defaultMaxLength Default for the `max_length` option
+     * @param bool $defaultTrimWhitespace Default for the `trim_whitespace` option
+     * @param list<string> $defaultFormats Default symbologies for the `formats` option
+     * @param string $defaultFacingMode Default for the `facing_mode` option
      */
     public function __construct(
         private readonly bool $defaultEnableScanner = true,
@@ -29,6 +35,12 @@ final class BarcodeType extends AbstractType
     ) {
     }
 
+    /**
+     * Adds the model transformer that normalizes and length-checks the barcode.
+     *
+     * @param FormBuilderInterface<string|null> $builder Form builder
+     * @param array<string, mixed> $options Resolved options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->addModelTransformer(new BarcodeValueTransformer(
@@ -38,6 +50,13 @@ final class BarcodeType extends AbstractType
         ));
     }
 
+    /**
+     * Exposes the widget variables and the `data-nowo-barcode-input-*` attributes to the form theme.
+     *
+     * @param FormView $view Form view
+     * @param FormInterface<string> $form Form instance
+     * @param array<string, mixed> $options Resolved options
+     */
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         $view->vars['barcode_enable_scanner']  = $options['enable_scanner'];
@@ -73,6 +92,11 @@ final class BarcodeType extends AbstractType
         $view->vars['attr']['autocomplete'] = 'off';
     }
 
+    /**
+     * Declares the type options, their defaults (from bundle config) and allowed values.
+     *
+     * @param OptionsResolver $resolver Options resolver
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -108,11 +132,17 @@ final class BarcodeType extends AbstractType
         $resolver->setAllowedTypes('autofocus', ['bool']);
     }
 
+    /**
+     * @return string Parent type (TextType)
+     */
     public function getParent(): string
     {
         return TextType::class;
     }
 
+    /**
+     * @return string Twig block prefix (`nowo_barcode_input`)
+     */
     public function getBlockPrefix(): string
     {
         return 'nowo_barcode_input';

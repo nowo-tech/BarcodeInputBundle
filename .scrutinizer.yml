@@ -18,7 +18,7 @@ build:
         memory_limit: -1
         'xdebug.mode': coverage
     node:
-      version: 16
+      version: 22
 
   cache:
     directories:

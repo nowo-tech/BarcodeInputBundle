@@ -42,7 +42,7 @@ From the repository root:
 make demo-smoke
 ```
 
-This runs `demo/Makefile` `release-verify`: start the Symfony 8 demo, wait for HTTP 2xx/3xx on `http://127.0.0.1:$PORT/` (default **8071**), then tear down.
+This runs `demo/Makefile` `release-verify`: start the Symfony 8 demo, follow redirects from `http://127.0.0.1:$PORT/` and require a final **HTTP 200** (default **8071**), then tear down.
 
 ## Start the demo (development)
 

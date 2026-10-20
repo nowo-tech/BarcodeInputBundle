@@ -18,6 +18,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- Makefile: new `help` target (default goal) listing targets in the canonical block order (REQ-MAKE-001); `release-check` now starts with `ensure-up` and runs `check-no-raw-html-form` and `validate-translations` (REQ-MAKE-002).
+- `validate-translations` also checks translation key parity across the 7 bundle locales and the demo locales (`.scripts/check-translation-key-parity.py`, REQ-MAKE-004).
+- Demo smoke (`make demo-smoke`) follows redirects and requires a final HTTP 200 instead of any 2xx/3xx (REQ-TEST-011).
+- TypeScript coverage gate: Vitest thresholds of 90% (lines, statements, functions, branches) and a new CI `frontend` job running `pnpm run test:coverage` and the build; new tests for the camera scanner, the DOM observer, the custom element lifecycle, the standalone entry and the logger (REQ-TEST-003).
+- PHPDoc on every class and public method (REQ-CS-001).
+- `.github/SECURITY.md` follows the canonical policy template (duplicated sections removed, REQ-SEC-003).
+- Scrutinizer builds with Node 22 (Node 16 is EOL and below the Vite/Vitest requirement, REQ-CI-002).
+
+### Fixed
+
+- Demo entrypoint copies the mode-specific Caddyfile to `/etc/frankenphp/Caddyfile`, the file `frankenphp run` actually reads (it used `/etc/caddy/Caddyfile`, so worker-mode edits were ignored until rebuild) (REQ-DEMO-010).
+- `.scripts/check-no-cursor-coauthor.sh` also runs inside git worktrees (`.git` file instead of directory).
+- `pnpm install --frozen-lockfile` works again: the `vite` override is scoped to `vite@<6.4.3` so it no longer rewrites the direct `vite` dev dependency (the lock file was out of sync with `package.json`).
+
 ## [1.1.2] - 2026-10-20
 
 Dependency refresh (bundle and demos), php-cs-fixer ParallelConfig(2). See [UPGRADING](UPGRADING.md#to-112).

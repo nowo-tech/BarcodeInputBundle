@@ -75,7 +75,7 @@ The sections below state **behavior**; this subsection states **intent** in back
 | REQ-GH-002 | `.github/dependabot.yml` | Weekly Dependabot for root npm/pnpm (Vite/TypeScript). |
 | REQ-SF-005 | `phpunit.xml.dist`, CI test jobs | Fail on direct Symfony deprecations (`SYMFONY_DEPRECATIONS_HELPER=max[direct]=0`). |
 | REQ-DEMO-010 | `demo/symfony8` | FrankenPHP PHP 8.5 demo image and runtime. |
-| REQ-TEST-011 | `demo/Makefile` `release-verify`, `make demo-smoke` | Demo up → HTTP 2xx/3xx → down smoke before release-check. |
+| REQ-TEST-011 | `demo/Makefile` `release-verify`, `make demo-smoke` | Demo up → final HTTP 200 (redirects followed) → down smoke before release-check. |
 
 When you change scripted behavior, **update the existing `REQ-*` comment** if the ID still matches the rule, or **add a new `REQ-*`** and document it here and in the PR description.
 

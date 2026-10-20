@@ -11,6 +11,10 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
+/**
+ * Loads the bundle services, exposes the configuration as container parameters and
+ * prepends the Twig form theme and the asset package.
+ */
 final class NowoBarcodeInputExtension extends Extension implements PrependExtensionInterface
 {
     private const FORM_THEME_MAP = [
@@ -27,6 +31,12 @@ final class NowoBarcodeInputExtension extends Extension implements PrependExtens
         'tailwind_2_layout.html.twig'             => '@NowoBarcodeInputBundle/Form/barcode_input_theme_tailwind2.html.twig',
     ];
 
+    /**
+     * Loads services.yaml and stores the processed configuration as `nowo_barcode_input.*` parameters.
+     *
+     * @param array<int, array<string, mixed>> $configs Raw configuration blocks
+     * @param ContainerBuilder $container Service container being built
+     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
@@ -41,6 +51,12 @@ final class NowoBarcodeInputExtension extends Extension implements PrependExtens
         $container->setParameter(Configuration::ALIAS . '.form_theme', $config['form_theme']);
     }
 
+    /**
+     * Prepends the bundle form theme matching `form_theme` to Twig and registers the
+     * `nowo_barcode_input` asset package when FrameworkBundle is present.
+     *
+     * @param ContainerBuilder $container Service container being built
+     */
     public function prepend(ContainerBuilder $container): void
     {
         $configs   = $container->getExtensionConfig(Configuration::ALIAS);
@@ -68,6 +84,11 @@ final class NowoBarcodeInputExtension extends Extension implements PrependExtens
         }
     }
 
+    /**
+     * Returns the configuration alias (`nowo_barcode_input`).
+     *
+     * @return string Extension alias
+     */
     public function getAlias(): string
     {
         return Configuration::ALIAS;
