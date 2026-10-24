@@ -133,7 +133,7 @@ qa: cs-check twig-lint test
 
 composer-sync: ensure-up
 	$(COMPOSE) exec -T $(SERVICE_PHP) composer validate --strict
-	$(COMPOSE) exec -T $(SERVICE_PHP) composer update --lock --no-install --no-interaction
+	$(COMPOSE) exec -T $(SERVICE_PHP) composer install --no-interaction --prefer-dist
 
 release-check-demos:
 	@if [ -d demo ]; then $(MAKE) -C demo release-check; fi
