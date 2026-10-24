@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **Demo (REQ-TWIG-003):** `barcode_demo/show.html.twig` renders the form through the child loop (`{% for child in form %}` + `form_row(child)`) instead of `form_row(form.barcode)`.
+
 ## [1.1.3] - 2026-10-20
 
 Release-check chain, TypeScript coverage gate, demo smoke HTTP 200, demo Caddyfile path, PHPDoc. See [UPGRADING](UPGRADING.md#to-113).
