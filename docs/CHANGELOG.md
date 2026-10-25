@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.1.4] - 2026-10-25](#114---2026-10-25)
 - [[1.1.3] - 2026-10-20](#113---2026-10-20)
 - [[1.1.2] - 2026-10-20](#112---2026-10-20)
 - [[1.1.1] - 2026-10-13](#111---2026-10-13)
@@ -19,10 +20,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.1.4] - 2026-10-25
+
+Reproducible JS bundle: the build stamp is a hash of the sources instead of the build time. See [UPGRADING](UPGRADING.md#to-114).
+
 ### Changed
 
 - **Assets:** reproducible bundle build. `__BARCODE_INPUT_BUILD_TIME__` now holds a build id (a hash of the TypeScript/CSS sources and `pnpm-lock.yaml`) instead of the build time, so rebuilding unchanged sources (`make assets`, `make release-check`) no longer rewrites the committed JS; the console line reads `script loaded, build: <id>`.
 - **Demo (REQ-TWIG-003):** `barcode_demo/show.html.twig` renders the form through the child loop (`{% for child in form %}` + `form_row(child)`) instead of `form_row(form.barcode)`.
+
+[1.1.4]: https://github.com/nowo-tech/BarcodeInputBundle/releases/tag/v1.1.4
 
 ## [1.1.3] - 2026-10-20
 
