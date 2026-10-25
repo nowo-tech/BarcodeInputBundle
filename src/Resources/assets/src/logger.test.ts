@@ -6,7 +6,7 @@ describe('createBundleLogger', () => {
     vi.restoreAllMocks();
   });
 
-  it('prints the script-loaded line with and without build time', () => {
+  it('prints the script-loaded line with and without build id', () => {
     const log = vi.spyOn(console, 'log').mockImplementation(() => undefined);
 
     createBundleLogger('barcode-input', { buildTime: '2026-10-20' }).scriptLoaded();
@@ -14,8 +14,8 @@ describe('createBundleLogger', () => {
     createBundleLogger('barcode-input').scriptLoaded();
 
     expect(log).toHaveBeenCalledTimes(3);
-    expect(String(log.mock.calls[0][0])).toContain('build time');
-    expect(String(log.mock.calls[1][0])).not.toContain('build time');
+    expect(String(log.mock.calls[0][0])).toContain('build: ');
+    expect(String(log.mock.calls[1][0])).not.toContain('build: ');
   });
 
   it('stays silent until debug is enabled, then formats object arguments', () => {

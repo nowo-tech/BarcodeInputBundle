@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- **Assets:** reproducible bundle build. `__BARCODE_INPUT_BUILD_TIME__` now holds a build id (a hash of the TypeScript/CSS sources and `pnpm-lock.yaml`) instead of the build time, so rebuilding unchanged sources (`make assets`, `make release-check`) no longer rewrites the committed JS; the console line reads `script loaded, build: <id>`.
 - **Demo (REQ-TWIG-003):** `barcode_demo/show.html.twig` renders the form through the child loop (`{% for child in form %}` + `form_row(child)`) instead of `form_row(form.barcode)`.
 
 ## [1.1.3] - 2026-10-20
