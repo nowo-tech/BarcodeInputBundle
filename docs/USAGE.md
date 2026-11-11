@@ -17,6 +17,7 @@ Regenerate with `make -C demo/symfony8 demo-screenshots` (REQ-DEMO-013).
 - [Frontend script](#frontend-script)
 - [Customization](#customization)
 - [Twig template overrides](#twig-template-overrides)
+- [Using it from a DDD / hexagonal application](#using-it-from-a-ddd--hexagonal-application)
 
 ## Form type
 
@@ -84,3 +85,50 @@ Use the directory name **`NowoBarcodeInputBundle`** (matches `Bundle::getName()`
 | `Form/barcode_input_theme_tailwind2.html.twig` | `templates/bundles/NowoBarcodeInputBundle/Form/barcode_input_theme_tailwind2.html.twig` |
 
 All form-submitting demo and host templates **must** use Symfony Forms (`form_start` / `form_row` / `form_end`), never raw `<form>` or `<input>` in page templates.
+
+## Using it from a DDD / hexagonal application
+
+BarcodeInputBundle is **presentation only**: a form field (`BarcodeType`, a `TextType`) with a camera scanner. It has
+no entities, no events, no services your code calls and no Doctrine dependency, and it knows nothing about your model.
+
+**Standard Symfony project (default).** Bind the field to a string property of your entity or form model
+(`data_class`); the submitted value is the normalized string.
+
+**DDD / hexagonal project (opt-in).**
+
+- The field submits a normalized **string** (trimmed, printable ASCII only, at most `max_length` characters).
+  Bind it to a property of your request/command DTO, not to a domain entity, and build your value object
+  (for example `Gtin`) in the application layer, where it validates the check digit.
+- To bind it directly to a value object, add your own model transformer on the child; it runs between the
+  bundle's normalization and your model. Turn the value object's validation error into a
+  `TransformationFailedException` so the form shows it as an invalid field:
+
+```php
+use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\Exception\TransformationFailedException;
+
+$builder->add('gtin', BarcodeType::class, ['formats' => ['ean_13']]);
+$builder->get('gtin')->addModelTransformer(new CallbackTransformer(
+    static fn (?Gtin $gtin): string => $gtin === null ? '' : $gtin->value,
+    static function (?string $code): ?Gtin {
+        try {
+            return $code === null || $code === '' ? null : Gtin::fromString($code);
+        } catch (InvalidGtin $e) {
+            throw new TransformationFailedException($e->getMessage(), 0, $e);
+        }
+    },
+));
+```
+
+- `formats` only tells the browser scanner which symbologies to decode; it is not server-side validation.
+- There are no ports to type-hint and nothing to replace or decorate: customise through form options, form type
+  extensions and the Twig theme (see [Customization](#customization) and
+  [Twig template overrides](#twig-template-overrides)). There are no IDs or events.
+
+Both paths are covered by `tests/Unit/Form/BarcodeTypeHostPathsTest.php`.
+
+### Known limitations
+
+- A model value that is not a string, number or `Stringable` is rendered as an empty field instead of failing; give
+  value objects a model transformer (above) or `__toString()`.
+- No check-digit validation; validate in your value object.

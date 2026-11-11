@@ -20,6 +20,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Documentation
+
+- USAGE: new section "Using it from a DDD / hexagonal application" (string property vs command DTO with a value-object model transformer, known limitations).
+
+### Tests
+
+- `BarcodeTypeHostPathsTest`: the field bound to an entity-like string property (standard host) and to a command DTO holding a value object through a model transformer (DDD host).
+
 ## [1.1.4] - 2026-10-25
 
 Reproducible JS bundle: the build stamp is a hash of the sources instead of the build time. See [UPGRADING](UPGRADING.md#to-114).
