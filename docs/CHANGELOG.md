@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Tests
 
+- REQ-RUNTIME-002: `WorkerKeptAliveKernelTest` renders and submits a host form 1000 times in ONE kernel without any reset, alternating two inputs and locales, and asserts no state carries over and flat memory. `docs/FRANKENPHP-WORKER-AUDIT.md` refreshed (version, test, reset-false statement, rule 7).
 - `BarcodeTypeHostPathsTest`: the field bound to an entity-like string property (standard host) and to a command DTO holding a value object through a model transformer (DDD host).
 
 ## [1.1.4] - 2026-10-25
