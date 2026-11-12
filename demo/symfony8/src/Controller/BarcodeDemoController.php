@@ -63,7 +63,7 @@ final class BarcodeDemoController extends AbstractController
             throw $this->createNotFoundException(sprintf('Unknown demo: %s', $slug));
         }
 
-        $cfg = self::EXAMPLES[$slug];
+        $cfg  = self::EXAMPLES[$slug];
         $form = $this->createForm(BarcodeDemoType::class, ['barcode' => ''], [
             'enable_scanner' => $cfg['enable_scanner'],
             'max_length'     => $cfg['max_length'],

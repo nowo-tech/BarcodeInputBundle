@@ -24,13 +24,13 @@ final class BarcodeDemoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $this->addBarcode($builder, 'barcode', [
-            'label'           => 'Barcode',
-            'help'            => $options['barcode_help'],
-            'placeholder'     => false,
-            'enable_scanner'  => $options['enable_scanner'],
-            'max_length'      => $options['max_length'],
-            'formats'         => $options['formats'],
-            'button_class'    => 'nowo-ui-btn nowo-ui-btn--outline',
+            'label'          => 'Barcode',
+            'help'           => $options['barcode_help'],
+            'placeholder'    => false,
+            'enable_scanner' => $options['enable_scanner'],
+            'max_length'     => $options['max_length'],
+            'formats'        => $options['formats'],
+            'button_class'   => 'nowo-ui-btn nowo-ui-btn--outline',
         ]);
         $this->addWithDefaults($builder, 'submit', SubmitType::class, [
             'label' => 'Submit barcode',
