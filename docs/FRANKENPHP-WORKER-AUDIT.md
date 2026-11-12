@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Package | `nowo-tech/barcode-input-bundle` (`symfony-bundle`) |
-| Audited revision | `v1.1.4` (re-checked 2026-11-12; runtime code unchanged since the previous audit) |
+| Audited revision | `v1.1.4` (reviewed again on 2026-11-12 at this version; all shared services are stateless, see the services table) |
 | Audit date | 2026-11-12 (earlier passes kept in the history) |
 | Target runtime | FrankenPHP **worker** with **`FRANKENPHP_RESET_KERNEL=false`** (sticky Kernel / “Friendly Worker”) |
 | Method | Manual review of every file under `src/` (form type, data transformer, enum, DI extension, configuration, compiler pass, `services.yaml`, Twig themes) + PHPStan classic + worker-strict |
