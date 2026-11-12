@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | Package | `nowo-tech/barcode-input-bundle` (`symfony-bundle`) |
-| Audited revision | `v1.0.0` / `8780fc6` (+ hardening 2026-09-24) |
-| Audit date | 2026-09-24 (re-audit; first pass 2026-09-23) |
+| Audited revision | `v1.1.4` (reviewed again on 2026-11-12 at this version; all shared services are stateless, see the services table) |
+| Audit date | 2026-11-12 (earlier passes kept in the history) |
 | Target runtime | FrankenPHP **worker** with **`FRANKENPHP_RESET_KERNEL=false`** (sticky Kernel / “Friendly Worker”) |
 | Method | Manual review of every file under `src/` (form type, data transformer, enum, DI extension, configuration, compiler pass, `services.yaml`, Twig themes) + PHPStan classic + worker-strict |
 | **Verdict** | ✅ **100% compatible** under Scenario B (`reset_kernel: false`) — no remediations required for sticky Kernel |
@@ -16,6 +16,7 @@
 - [Services reviewed](#services-reviewed)
 - [Findings](#findings)
   - [Closed / hardening notes (2026-09-24)](#closed--hardening-notes-2026-09-24)
+- [Kept-alive kernel test](#kept-alive-kernel-test)
 - [Usage recommendations in worker mode](#usage-recommendations-in-worker-mode)
 - [Re-audit triggers](#re-audit-triggers)
 
@@ -74,6 +75,14 @@ No open findings.
 |----|--------|--------|
 | H-01 | Shared array default for `formats` could be aliased into OptionsResolver | Defensive copy in `configureOptions()` — belt-and-suspenders for Scenario B |
 | H-02 | PHPStan worker hygiene | Use `ruleset-worker-strict.neon` instead of plain worker (flags request-superglobal access; none present) |
+
+## Kept-alive kernel test
+
+The bundle is **safe with kernel reset false**: no shared service keeps request data, so nothing needs `kernel.reset`.
+
+`tests/Integration/Worker/WorkerKeptAliveKernelTest::testFormRenderAndSubmitInOneKernelWithoutResetCarriesNoStateAndKeepsMemoryFlat` (REQ-RUNTIME-002) boots ONE kernel (FrameworkBundle, TwigBundle and this bundle, host kernel in `tests/Fixtures/Worker/`) and never calls `services_resetter` or `kernel.reset`. Through `http_kernel` (`handle()` + `terminate()`) it renders (GET) and submits (POST) a host form with a `BarcodeType` field 1000 times (2000 requests), alternating two inputs with different options (EAN-13 / max length 13 / scanner on / locale `en`, Code 128 + Code 39 / max length 20 / scanner off / no trimming / locale `es`). Every response must contain only its own formats, max length, scanner button and submitted value, none of the other input's, and memory growth after a 100-iteration warm-up must stay under 4 MiB.
+
+Rule 7 (host entity manager): the bundle has no persistence and never flushes or clears an entity manager; a host must never clear the default entity manager from a reset hook for this bundle's sake.
 
 ## Usage recommendations in worker mode
 
