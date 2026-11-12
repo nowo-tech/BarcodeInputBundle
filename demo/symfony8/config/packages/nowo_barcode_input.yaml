@@ -9,4 +9,4 @@ nowo_barcode_input:
         - code_39
         - upc_a
     facing_mode: environment
-    form_theme: bootstrap_5_layout.html.twig
+    form_theme: form_div_layout.html.twig
