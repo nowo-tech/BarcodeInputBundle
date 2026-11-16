@@ -18,6 +18,7 @@ Regenerate with `make -C demo/symfony8 demo-screenshots` (REQ-DEMO-013).
 - [Customization](#customization)
 - [Twig template overrides](#twig-template-overrides)
 - [Using it from a DDD / hexagonal application](#using-it-from-a-ddd--hexagonal-application)
+  - [Known limitations](#known-limitations)
 
 ## Form type
 
