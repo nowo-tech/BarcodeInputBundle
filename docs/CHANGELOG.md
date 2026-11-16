@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Documentation
 
+- REQ compliance sweep 2026-11-16: USAGE table of contents lists "Known limitations" (REQ-DOCS-005); Dependabot also tracks the demo Playwright `e2e/` npm dependencies (REQ-GH-002).
 - USAGE: new section "Using it from a DDD / hexagonal application" (string property vs command DTO with a value-object model transformer, known limitations).
 
 ### Tests
