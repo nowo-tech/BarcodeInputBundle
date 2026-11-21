@@ -73,19 +73,15 @@ final class BarcodeDemoController extends AbstractController
 
         $form->handleRequest($request);
 
-        $barcodeValue = null;
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var array{barcode: string} $data */
-            $data         = $form->getData();
-            $barcodeValue = $data['barcode'];
+            $data = $form->getData();
+            $this->addFlash('success', sprintf('Submitted barcode value: %s', $data['barcode']));
         }
 
         return $this->render('barcode_demo/show.html.twig', [
-            'form'          => $form,
-            'barcode_value' => $barcodeValue,
-            'demo_title'    => $cfg['title'],
-            'demo_slug'     => $slug,
-            'examples'      => self::EXAMPLES,
+            'form'       => $form,
+            'demo_title' => $cfg['title'],
         ]);
     }
 }

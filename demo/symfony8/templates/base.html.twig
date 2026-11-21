@@ -1,13 +1,17 @@
-{#- REQ-DEMO-014: the demo shell is UiKit's admin layout with UiKit's default theme (nowo-ui.css from the bundle's own
-    asset package, no CSS framework, no CDN). -#}
-{% extends '@NowoUiKit/layout/admin.html.twig' %}
-
+{#- REQ-DEMO-014: the demo runs inside UiKit's shared demo platform shell. This file only declares the demo. -#}
+{% extends '@NowoUiKit/demo_platform/layout.html.twig' %}
+{% set nowo_ui_demo_platform = {
+    bundle: 'Barcode Input',
+    home_route: 'app_demo_index',
+    repository: 'https://github.com/nowo-tech/BarcodeInputBundle',
+    translation_domain: false,
+    nav: [
+        {label: 'All demos', route: 'app_demo_index', section: 'Barcode Input'},
+        {label: 'EAN scanner', route: 'app_demo_barcode', params: {slug: 'ean-scanner'}, section: 'Examples', testid: 'demo-nav-ean-scanner'},
+        {label: 'Warehouse Code 128', route: 'app_demo_barcode', params: {slug: 'warehouse-code128'}, section: 'Examples', testid: 'demo-nav-warehouse-code128'},
+        {label: 'Manual entry only', route: 'app_demo_barcode', params: {slug: 'manual-only'}, section: 'Examples', testid: 'demo-nav-manual-only'},
+    ],
+} %}
 {% block nowo_ui_document_title %}{% block title %}Barcode Input Demo{% endblock %}{% endblock %}
-
-{% block nowo_ui_navigation %}
-    <header class="nowo-ui-header" data-testid="demo-masthead">
-        <a class="nowo-ui-brand" href="{{ path('app_demo_index') }}">Barcode Input Bundle Demo</a>
-    </header>
-{% endblock %}
 
 {% block nowo_ui_content %}{% block body %}{% endblock %}{% endblock %}

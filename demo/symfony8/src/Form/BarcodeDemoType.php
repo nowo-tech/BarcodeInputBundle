@@ -7,7 +7,6 @@ namespace App\Form;
 use Nowo\FormKitBundle\Attribute\FormKitConfig;
 use Nowo\FormKitBundle\Form\FormOptionsTrait;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -31,10 +30,6 @@ final class BarcodeDemoType extends AbstractType
             'max_length'     => $options['max_length'],
             'formats'        => $options['formats'],
             'button_class'   => 'nowo-ui-btn nowo-ui-btn--outline',
-        ]);
-        $this->addWithDefaults($builder, 'submit', SubmitType::class, [
-            'label' => 'Submit barcode',
-            'attr'  => ['class' => 'nowo-ui-btn nowo-ui-btn--primary'],
         ]);
     }
 

@@ -8,21 +8,22 @@
 {% endblock %}
 
 {% block body %}
-    <section class="nowo-ui-card">
-        <div class="nowo-ui-card__body">
+    {% embed '@NowoUiKit/demo_platform/_section.html.twig' with {title: 'Examples', kind: 'table', empty: examples is empty, state_message: 'No examples configured.'} %}
+        {% block section_body %}
             <table class="nowo-ui-data-table">
+                <thead>
+                    <tr><th scope="col">Example</th><th scope="col" class="nowo-ui-cell--wrap">Configuration</th><th scope="col">Slug</th></tr>
+                </thead>
                 <tbody>
                     {% for slug, cfg in examples %}
                         <tr>
-                            <td>
-                                <a class="nowo-ui-link" href="{{ path('app_demo_barcode', { slug: slug }) }}">{{ cfg.title }}</a>
-                                <div class="nowo-ui-muted">{{ cfg.help }}</div>
-                            </td>
+                            <td><a class="nowo-ui-link" href="{{ path('app_demo_barcode', { slug: slug }) }}">{{ cfg.title }}</a></td>
+                            <td class="nowo-ui-cell--wrap">{{ cfg.help }}</td>
                             <td><span class="nowo-ui-badge nowo-ui-badge--neutral">{{ slug }}</span></td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
-    </section>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
