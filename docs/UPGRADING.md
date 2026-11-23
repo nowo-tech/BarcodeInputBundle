@@ -3,6 +3,7 @@
 ## Table of contents
 
 - [Unreleased](#unreleased)
+- [To 1.2.0](#to-120)
 - [To 1.1.4](#to-114)
 - [To 1.1.3](#to-113)
 - [To 1.1.2](#to-112)
@@ -17,6 +18,14 @@
   - [Integration checklist](#integration-checklist)
 
 ## Unreleased
+
+## To 1.2.0
+
+From **1.1.4**:
+
+```bash
+composer update nowo-tech/barcode-input-bundle
+```
 
 ## To 1.1.4
 

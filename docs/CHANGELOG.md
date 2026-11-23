@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.2.0] - 2026-11-23](#120---2026-11-23)
 - [[1.1.4] - 2026-10-25](#114---2026-10-25)
 - [[1.1.3] - 2026-10-20](#113---2026-10-20)
 - [[1.1.2] - 2026-10-20](#112---2026-10-20)
@@ -19,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - [[1.0.0] - 2026-08-27](#100---2026-08-27)
 
 ## [Unreleased]
+
+## [1.2.0] - 2026-11-23
 
 ### Changed
 
@@ -45,6 +48,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - **Console**: quiet switch for the script-loaded line: `<html data-nowo-console="quiet">` or `globalThis.NOWO_CONSOLE = 'quiet'` prints nothing. The default is unchanged.
+
+[1.2.0]: https://github.com/nowo-tech/BarcodeInputBundle/releases/tag/v1.2.0
 
 ## [1.1.4] - 2026-10-25
 
