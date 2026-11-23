@@ -40,9 +40,9 @@ describe('createBundleLogger', () => {
     logger.warn('w', failure);
     logger.error('e');
 
-    expect(spies.debug.mock.calls[0].slice(2)).toEqual(['d', '{"k":1}']);
-    expect(spies.info.mock.calls[0].slice(2)).toEqual(['i', null]);
-    expect(spies.warn.mock.calls[0].slice(2)).toEqual(['w', failure]);
+    expect(spies.debug.mock.calls[0]?.slice(2)).toEqual(['d', '{"k":1}']);
+    expect(spies.info.mock.calls[0]?.slice(2)).toEqual(['i', null]);
+    expect(spies.warn.mock.calls[0]?.slice(2)).toEqual(['w', failure]);
     expect(spies.error).toHaveBeenCalledTimes(1);
   });
 });
