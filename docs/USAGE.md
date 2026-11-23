@@ -19,6 +19,7 @@ Regenerate with `make -C demo/symfony8 demo-screenshots` (REQ-DEMO-013).
 - [Twig template overrides](#twig-template-overrides)
 - [Using it from a DDD / hexagonal application](#using-it-from-a-ddd--hexagonal-application)
   - [Known limitations](#known-limitations)
+- [Browser console](#browser-console)
 
 ## Form type
 
@@ -133,3 +134,7 @@ Both paths are covered by `tests/Unit/Form/BarcodeTypeHostPathsTest.php`.
 - A model value that is not a string, number or `Stringable` is rendered as an empty field instead of failing; give
   value objects a model transformer (above) or `__toString()`.
 - No check-digit validation; validate in your value object.
+
+## Browser console
+
+The bundle's script logs one line when it loads (`📦 [barcode-input] script loaded, build: 2026-11-23 14:05 UTC`) so a developer can tell which build a page runs. To silence it, set `<html data-nowo-console="quiet">` or `globalThis.NOWO_CONSOLE = 'quiet'` before the script loads; nothing is printed then. The default is unchanged.
