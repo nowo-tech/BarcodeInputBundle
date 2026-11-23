@@ -40,7 +40,7 @@ final class BarcodeTypeHostPathsTest extends TestCase
         $builder = $this->factory()->createBuilder(FormType::class, $command, ['data_class' => BarcodeHostCommand::class])
             ->add('gtin', BarcodeType::class, ['formats' => ['ean_8']]);
         $builder->get('gtin')->addModelTransformer(new CallbackTransformer(
-            static fn (?BarcodeHostGtin $gtin): string => $gtin === null ? '' : $gtin->value,
+            static fn (?BarcodeHostGtin $gtin): string => $gtin->value ?? '',
             static function (?string $code): ?BarcodeHostGtin {
                 if ($code === null || $code === '') {
                     return null;
@@ -68,7 +68,7 @@ final class BarcodeTypeHostPathsTest extends TestCase
         $builder = $this->factory()->createBuilder(FormType::class, $command, ['data_class' => BarcodeHostCommand::class])
             ->add('gtin', BarcodeType::class);
         $builder->get('gtin')->addModelTransformer(new CallbackTransformer(
-            static fn (?BarcodeHostGtin $gtin): string => $gtin === null ? '' : $gtin->value,
+            static fn (?BarcodeHostGtin $gtin): string => $gtin->value ?? '',
             static function (?string $code): ?BarcodeHostGtin {
                 try {
                     return $code === null || $code === '' ? null : BarcodeHostGtin::fromString($code);
