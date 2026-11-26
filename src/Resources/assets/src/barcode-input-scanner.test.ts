@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const zxing = vi.hoisted(() => ({
   decodeFromConstraints: vi.fn(),
@@ -25,6 +25,11 @@ import {
   stopObserving,
 } from './barcode-input-lib';
 import type { BundleLogger } from './logger';
+
+// REQ-ASSETS-005: every test starts with an empty once-guard registry.
+beforeEach(() => {
+  delete (globalThis as { __nowoScriptBannerNames?: unknown }).__nowoScriptBannerNames;
+});
 
 type DecodeCallback = (result: { getText: () => string } | undefined) => void;
 
