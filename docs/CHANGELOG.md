@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.2.1] - 2026-11-26](#121---2026-11-26)
 - [[1.2.0] - 2026-11-23](#120---2026-11-23)
 - [[1.1.4] - 2026-10-25](#114---2026-10-25)
 - [[1.1.3] - 2026-10-20](#113---2026-10-20)
@@ -21,9 +22,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-11-26
+
 ### Fixed
 
 - The `📦 [name] script loaded` console banner now prints once per page, even when the script is loaded twice: per-name once-guard (a `Set` on `globalThis`) in `logger.ts`, with a Vitest test and rebuilt assets (REQ-ASSETS-005).
+
+[1.2.1]: https://github.com/nowo-tech/BarcodeInputBundle/releases/tag/v1.2.1
 
 ## [1.2.0] - 2026-11-23
 
